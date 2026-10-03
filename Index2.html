@@ -1,492 +1,467 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jonah Aliwalas | Supply Chain & Demand Planning Portfolio</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
+    <!-- Standard Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#0284c7',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            900: '#0c4a6e',
-                        }
-                    }
-                }
+    <style>
+        /* Base Reset & Web-Safe Fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #020617;
+            color: #f1f5f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 3rem;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(2, 6, 23, 0.9);
+            border-bottom: 1px solid #1e293b;
+            backdrop-filter: blur(10px);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+        .logo-box {
+            width: 2rem;
+            height: 2rem;
+            background-color: #0284c7;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.875rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+        .btn-nav {
+            background-color: #0284c7;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: #fff !important;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 5rem 0 4rem;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 7fr 5fr;
+                align-items: center;
             }
         }
-    </script>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.75rem;
+            background-color: rgba(2, 132, 199, 0.1);
+            border: 1px solid rgba(2, 132, 199, 0.3);
+            border-radius: 9999px;
+            color: #38bdf8;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 1.5rem 0;
+            color: #fff;
+        }
+        .highlight {
+            color: #38bdf8;
+        }
+        .quote-box {
+            background-color: #0f172a;
+            border-left: 4px solid #0284c7;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-style: italic;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            border-top: 1px solid #1e293b;
+            border-right: 1px solid #1e293b;
+            border-bottom: 1px solid #1e293b;
+        }
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .btn-primary {
+            background-color: #0284c7;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-secondary {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
 
-    <!-- Background Decoration -->
-    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl"></div>
-        <div class="absolute top-1/3 -left-40 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-40 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-    </div>
+        /* Focus Card */
+        .card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .card-item {
+            background-color: rgba(2, 6, 23, 0.6);
+            border: 1px solid #1e293b;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+        .card-icon {
+            color: #38bdf8;
+            font-size: 1.25rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Case Study Card */
+        .case-card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .case-header {
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .case-tag {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .case-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 0.25rem;
+        }
+        .bullet-list {
+            list-style: disc;
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+        .bullet-list li {
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Box */
+        .contact-box {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 1.5rem;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #1e293b;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
 
     <!-- Navigation Header -->
-    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center font-bold text-white shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
-                    JA
-                </div>
-                <span class="font-bold text-lg tracking-tight text-slate-100">Jonah Aliwalas</span>
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <div class="logo-box">JA</div>
+                <span>Jonah Aliwalas</span>
             </a>
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#about" class="text-slate-300 hover:text-brand-400 transition-colors">About</a>
-                <a href="#projects" class="text-slate-300 hover:text-brand-400 transition-colors">Case Studies</a>
-                <a href="#skills" class="text-slate-300 hover:text-brand-400 transition-colors">Skills</a>
-                <a href="#experience" class="text-slate-300 hover:text-brand-400 transition-colors">Leadership & Experience</a>
-                <a href="#contact" class="px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white transition-all shadow-md shadow-brand-600/20">Contact</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Case Studies</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Leadership</a>
+                <a href="#contact" class="btn-nav">Contact</a>
             </div>
-            <button class="md:hidden text-slate-400 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-800 bg-slate-900/95 px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
-            <a href="#about" class="block py-2 text-slate-300 hover:text-brand-400">About</a>
-            <a href="#projects" class="block py-2 text-slate-300 hover:text-brand-400">Case Studies</a>
-            <a href="#skills" class="block py-2 text-slate-300 hover:text-brand-400">Skills</a>
-            <a href="#experience" class="block py-2 text-slate-300 hover:text-brand-400">Leadership & Experience</a>
-            <a href="#contact" class="block py-2 text-brand-400 font-semibold">Contact</a>
         </div>
     </nav>
 
     <!-- Main Hero Section -->
-    <header class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider">
-                    <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
-                    Aspiring Supply Chain & Demand Planning Specialist
+    <header class="container">
+        <div class="hero-grid">
+            <div>
+                <div class="badge">
+                    <span>•</span> Aspiring Supply Chain & Demand Planning Specialist
                 </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                    Optimizing Networks & Managing Complex <span class="bg-gradient-to-r from-brand-400 to-indigo-400 bg-clip-text text-transparent">Operations Behind the Scenes</span>
+                <h1 class="hero-title">
+                    Optimizing Networks & Managing Operations <span class="highlight">Behind the Scenes</span>
                 </h1>
                 
-                <!-- Personal Statement -->
-                <div class="p-5 rounded-xl bg-slate-900/90 border-l-4 border-brand-500 border-y border-r border-slate-800 text-slate-200 text-base sm:text-lg leading-relaxed shadow-xl italic relative">
-                    <i class="fa-solid fa-quote-left text-brand-500/20 text-4xl absolute top-3 right-4"></i>
+                <div class="quote-box">
                     "I've always had an interest in how things happen. Supply Chain Management will allow me to work behind the scenes on the execution of big projects that affect millions of people."
                 </div>
 
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="#projects" class="px-6 py-3 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-semibold transition-all shadow-lg shadow-brand-600/30 flex items-center gap-2">
-                        <span>Explore Operations Case Studies</span>
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn-primary">
+                        Explore Case Studies <i class="fa-solid fa-arrow-right"></i>
                     </a>
-                    <a href="mailto:Jonah.a312@gmail.com" class="px-6 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold transition-all flex items-center gap-2">
-                        <i class="fa-regular fa-envelope"></i>
-                        <span>Get In Touch</span>
+                    <a href="mailto:Jonah.a312@gmail.com" class="btn-secondary">
+                        <i class="fa-regular fa-envelope"></i> Get In Touch
                     </a>
                 </div>
 
-                <div class="pt-4 flex flex-wrap items-center gap-6 text-sm text-slate-400 border-t border-slate-800/80">
-                    <span class="flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-brand-500"></i> Metuchen, NJ
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <i class="fa-solid fa-graduation-cap text-brand-500"></i> Rutgers University
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <i class="fa-solid fa-phone text-brand-500"></i> (732) 515-8254
-                    </span>
+                <div style="color: #94a3b8; font-size: 0.875rem; display: flex; gap: 1.5rem;">
+                    <span><i class="fa-solid fa-location-dot" style="color: #0284c7;"></i> Metuchen, NJ</span>
+                    <span><i class="fa-solid fa-graduation-cap" style="color: #0284c7;"></i> Rutgers University</span>
                 </div>
             </div>
 
-            <!-- Supply Chain Card -->
-            <div class="lg:col-span-5">
-                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md shadow-2xl relative overflow-hidden">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                        <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        </div>
-                        <span class="text-xs font-mono text-slate-400">supply_chain_focus.sys</span>
+            <!-- Focus Summary Card -->
+            <div class="card">
+                <div style="font-size: 0.85rem; font-family: monospace; color: #64748b; margin-bottom: 1rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem;">
+                    supply_chain_focus.sys
+                </div>
+                <div class="card-item">
+                    <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div>
+                        <h4 style="color: #fff; font-size: 0.9rem;">Demand Forecasting & Analysis</h4>
+                        <p style="color: #94a3b8; font-size: 0.8rem;">Utilizing quantitative business models and Bloomberg analytics for forecasting precision.</p>
                     </div>
-
-                    <div class="py-6 space-y-4">
-                        <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-start gap-4">
-                            <div class="p-3 rounded-lg bg-brand-500/10 text-brand-400">
-                                <i class="fa-solid fa-chart-line text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-white">Demand Forecasting & Analysis</h4>
-                                <p class="text-xs text-slate-400 mt-1">Utilizing quantitative business models and Bloomberg analytics for forecasting precision.</p>
-                            </div>
-                        </div>
-
-                        <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-start gap-4">
-                            <div class="p-3 rounded-lg bg-emerald-500/10 text-emerald-400">
-                                <i class="fa-solid fa-sitemap text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-white">Operational Bottleneck Identification</h4>
-                                <p class="text-xs text-slate-400 mt-1">Evaluating internal workflows, associate communication, and frontline execution gaps.</p>
-                            </div>
-                        </div>
-
-                        <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-start gap-4">
-                            <div class="p-3 rounded-lg bg-indigo-500/10 text-indigo-400">
-                                <i class="fa-solid fa-industry text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-white">Strategic S.W.O.T. Execution</h4>
-                                <p class="text-xs text-slate-400 mt-1">Analyzing corporate strategy, supply constraints, and market dynamics in corporate operations.</p>
-                            </div>
-                        </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
+                    <div>
+                        <h4 style="color: #fff; font-size: 0.9rem;">Operational Bottleneck Identification</h4>
+                        <p style="color: #94a3b8; font-size: 0.8rem;">Evaluating internal workflows, associate communication, and execution gaps.</p>
                     </div>
-
-                    <div class="p-3 rounded-lg bg-slate-950 text-center border border-slate-800 text-xs font-mono text-slate-400">
-                        Status: Rutgers University (GPA: 3.5)
+                </div>
+                <div class="card-item">
+                    <div class="card-icon"><i class="fa-solid fa-industry"></i></div>
+                    <div>
+                        <h4 style="color: #fff; font-size: 0.9rem;">Strategic S.W.O.T. Execution</h4>
+                        <p style="color: #94a3b8; font-size: 0.8rem;">Analyzing corporate strategy, supply constraints, and market dynamics.</p>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-24">
+    <!-- Main Content -->
+    <main class="container">
 
         <!-- About Section -->
-        <section id="about" class="pt-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Academic & Professional Background</h2>
-                <p class="text-slate-400 mt-2">Combining analytical training, enterprise software tools, and frontline team management.</p>
-            </div>
+        <section id="about">
+            <h2 class="section-title">Academic & Professional Background</h2>
+            <p class="section-subtitle">Combining analytical training, enterprise tools, and frontline management.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Education Card -->
-                <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl mb-4">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Education</h3>
-                    <div class="mt-3 space-y-3">
-                        <div>
-                            <p class="text-sm font-semibold text-slate-200">Rutgers University - New Brunswick</p>
-                            <p class="text-xs text-slate-400">GPA: 3.5</p>
-                        </div>
-                        <div class="pt-2 border-t border-slate-800">
-                            <p class="text-sm font-semibold text-slate-200">Rutgers Preparatory School</p>
-                            <p class="text-xs text-slate-400">Weighted GPA: 3.98 / 4.00 | Honors with Distinction</p>
-                        </div>
-                    </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3 style="color: #fff; margin-bottom: 0.75rem;"><i class="fa-solid fa-graduation-cap" style="color: #38bdf8;"></i> Education</h3>
+                    <p style="font-weight: 600; font-size: 0.9rem;">Rutgers University - New Brunswick</p>
+                    <p style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem;">GPA: 3.5</p>
+                    <p style="font-weight: 600; font-size: 0.9rem; border-top: 1px solid #1e293b; padding-top: 0.75rem;">Rutgers Preparatory School</p>
+                    <p style="color: #94a3b8; font-size: 0.8rem;">Weighted GPA: 3.98 | Honors with Distinction</p>
                 </div>
 
-                <!-- Strategic Focus -->
-                <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl mb-4">
-                        <i class="fa-solid fa-boxes-packing"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Supply Chain & Operations</h3>
-                    <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                <div class="card">
+                    <h3 style="color: #fff; margin-bottom: 0.75rem;"><i class="fa-solid fa-boxes-packing" style="color: #34d399;"></i> Operations Focus</h3>
+                    <p style="color: #cbd5e1; font-size: 0.85rem;">
                         Dedicated to mastering demand management, logistics, process flow optimization, and inventory control. Experienced in diagnosing execution breakdowns in retail and business environments.
                     </p>
                 </div>
 
-                <!-- Financial Tools -->
-                <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl mb-4">
-                        <i class="fa-solid fa-chart-pie"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Market & Business Analytics</h3>
-                    <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                <div class="card">
+                    <h3 style="color: #fff; margin-bottom: 0.75rem;"><i class="fa-solid fa-chart-pie" style="color: #c084fc;"></i> Analytics</h3>
+                    <p style="color: #cbd5e1; font-size: 0.85rem;">
                         Bloomberg Market Concepts Certified. Applied portfolio management and risk assessment principles (Ranked 29th out of 200 in the Bentley University Stock Market Challenge).
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Case Studies Section -->
         <section id="projects">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <h2 class="text-3xl font-bold text-white tracking-tight">Key Case Studies & Projects</h2>
-                    <p class="text-slate-400 mt-2">Hands-on operations analysis, workflow recommendations, and corporate strategic evaluations.</p>
+            <h2 class="section-title">Key Case Studies & Projects</h2>
+            <p class="section-subtitle">Hands-on operations analysis, workflow recommendations, and corporate strategy.</p>
+
+            <!-- Case Study 1 -->
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-tag">Semester-Long Enterprise Analysis</div>
+                    <div class="case-title">Lowe's Holmdel NJ: Workplace Function & Communication Analysis</div>
                 </div>
-                <div class="mt-4 md:mt-0">
-                    <span class="text-xs font-mono text-brand-400 bg-brand-500/10 border border-brand-500/20 px-3 py-1.5 rounded-full">
-                        <i class="fa-solid fa-list-check mr-1"></i> 2 Targeted Case Studies
-                    </span>
+                <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
+                    Conducted a comprehensive company analysis of Lowe’s in Holmdel, New Jersey to determine operational efficiency and employee status. The study focused on gathering qualitative and quantitative workforce data to assess management practices, onboarding processes, and workplace conflict resolution mechanisms.
+                </p>
+                <div style="background-color: rgba(2, 6, 23, 0.5); padding: 1rem; border-radius: 0.5rem; border: 1px solid #1e293b;">
+                    <h4 style="color: #38bdf8; font-size: 0.85rem; margin-bottom: 0.5rem;">Core Finding & Actionable Recommendations</h4>
+                    <ul class="bullet-list">
+                        <li>Identified communication gaps between store managers and associates impacting overall motivation and workflow alignment.</li>
+                        <li>Recommended launching structured monthly recognition routines to improve frontline staff morale.</li>
+                        <li>Proposed bi-weekly supervisor-associate check-ins to streamline communication loops.</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="space-y-8">
-                <!-- Project 1: Lowes Holmdel NJ -->
-                <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-brand-500/40 transition-all shadow-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/5 rounded-bl-full pointer-events-none"></div>
-                    <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
-                        <div>
-                            <span class="text-xs font-mono font-semibold text-brand-400 uppercase tracking-wider">Semester-Long Enterprise Analysis</span>
-                            <h3 class="text-2xl font-bold text-white mt-1">Lowe's Holmdel NJ: Workplace Function & Communication Analysis</h3>
-                        </div>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-medium border border-slate-700">
-                            Retail Operations & Management
-                        </span>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
-                        <div class="lg:col-span-2 space-y-4 text-slate-300 text-sm leading-relaxed">
-                            <p>
-                                Conducted a comprehensive company analysis of Lowe’s in Holmdel, New Jersey with a dedicated team to determine operational efficiency and employee status. The study focused on gathering qualitative and quantitative workforce data to assess management practices, onboarding processes, and workplace conflict resolution mechanisms.
-                            </p>
-                            <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800/80">
-                                <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-2 text-brand-400">Methodology & Research</h4>
-                                <ul class="list-disc list-inside space-y-1 text-slate-300">
-                                    <li>Interviewed personnel across diverse organizational tiers to evaluate communication clarity and operational cohesion.</li>
-                                    <li>Assessed onboarding efficiency and protocols for handling high-pressure or uncomfortable workplace situations.</li>
-                                    <li>Analyzed the correlation between frontline associate morale and inventory/store execution effectiveness.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="p-5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col justify-between space-y-4">
-                            <div>
-                                <h4 class="text-xs font-bold uppercase tracking-wider text-red-400 mb-2 flex items-center gap-2">
-                                    <i class="fa-solid fa-triangle-exclamation"></i> Core Finding
-                                </h4>
-                                <p class="text-xs text-slate-300">
-                                    Identified a significant communication and recognition gap between store managers and associates. Associates frequently felt unrecognized and unappreciated for their contributions, impacting overall motivation and workflow alignment.
-                                </p>
-                            </div>
-
-                            <div class="pt-3 border-t border-slate-800">
-                                <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2 flex items-center gap-2">
-                                    <i class="fa-solid fa-circle-check"></i> Actionable Recommendations
-                                </h4>
-                                <ul class="text-xs text-slate-300 space-y-2">
-                                    <li class="flex items-start gap-2">
-                                        <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
-                                        <span>Launch structured <strong>monthly recognition routines</strong> to improve frontline staff morale.</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
-                                        <span>Schedule <strong>bi-weekly supervisor-associate check-ins</strong> to streamline communication loops.</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Case Study 2 -->
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-tag">Stevens Institute Business Program</div>
+                    <div class="case-title">Tesla Strategic Decision-Making & S.W.O.T. Analysis</div>
                 </div>
-
-                <!-- Project 2: Tesla S.W.O.T. Analysis -->
-                <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-brand-500/40 transition-all shadow-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-bl-full pointer-events-none"></div>
-                    <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
-                        <div>
-                            <span class="text-xs font-mono font-semibold text-indigo-400 uppercase tracking-wider">Stevens Institute Business Program</span>
-                            <h3 class="text-2xl font-bold text-white mt-1">Tesla Strategic Decision-Making & S.W.O.T. Analysis</h3>
-                        </div>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-medium border border-slate-700">
-                            Strategic Supply Chain & Corporate Planning
-                        </span>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
-                        <div class="lg:col-span-2 space-y-4 text-slate-300 text-sm leading-relaxed">
-                            <p>
-                                Completed an intensive research project examining Tesla’s strategic decisions, manufacturing supply chain vulnerabilities, and market positioning during the Stevens Institute of Technology Business Explorer Program.
-                            </p>
-                            <p>
-                                Evaluated corporate case studies using integrative business tools, investigating how global supply constraints, raw material procurement, and vertical integration strategies affect high-demand technology products.
-                            </p>
-                        </div>
-
-                        <div class="p-5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col justify-between">
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-3">Key Focus Areas</h4>
-                            <div class="grid grid-cols-2 gap-2 text-xs font-mono">
-                                <div class="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                                    <span class="text-emerald-400 font-bold block">Strengths</span> Direct Distribution
-                                </div>
-                                <div class="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                                    <span class="text-red-400 font-bold block">Weaknesses</span> Bottlenecks
-                                </div>
-                                <div class="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                                    <span class="text-blue-400 font-bold block">Opportunities</span> Scaling Logistics
-                                </div>
-                                <div class="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                                    <span class="text-yellow-400 font-bold block">Threats</span> Material Volatility
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Skills & Certifications</h2>
-                <p class="text-slate-400 mt-2">Analytical, software, and interpersonal toolset geared toward demand planning.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Certifications -->
-                <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 rounded-lg bg-brand-500/10 text-brand-400">
-                            <i class="fa-solid fa-certificate text-lg"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">Certifications & Finance</h3>
-                    </div>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-brand-400 text-xs"></i>
-                            <span><strong>Bloomberg Market Concepts (BMC)</strong> Certified</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-brand-400 text-xs"></i>
-                            <span>Bentley Stock Market Challenge (29th / 200)</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-brand-400 text-xs"></i>
-                            <span>Quantitative Data Analysis & Forecasting</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Design & Technical -->
-                <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
-                            <i class="fa-solid fa-compass-drafting text-lg"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">Design & Technical</h3>
-                    </div>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
-                            <span>AutoCAD Architectural Design</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
-                            <span>Physical Model Construction & Drafting</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
-                            <span>Spatial Planning & Diagramming</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Operations & Soft Skills -->
-                <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2.5 rounded-lg bg-indigo-500/10 text-indigo-400">
-                            <i class="fa-solid fa-users-gear text-lg"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">Operations & Soft Skills</h3>
-                    </div>
-                    <ul class="space-y-3 text-sm text-slate-300">
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-indigo-400 text-xs"></i>
-                            <span>Cross-Level Interviewing & Data Collection</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-indigo-400 text-xs"></i>
-                            <span>Event Operations & Schedule Coordination</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-check text-indigo-400 text-xs"></i>
-                            <span>Global Perspective (8 Countries Traveled)</span>
-                        </li>
-                    </ul>
-                </div>
+                <p style="color: #cbd5e1; font-size: 0.9rem;">
+                    Completed an intensive research project examining Tesla’s strategic decisions, manufacturing supply chain vulnerabilities, and market positioning. Investigated how global supply constraints, raw material procurement, and vertical integration strategies affect high-demand technology products.
+                </p>
             </div>
         </section>
 
         <!-- Leadership Section -->
         <section id="experience">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Leadership & Work Experience</h2>
-                <p class="text-slate-400 mt-2">Demonstrated management, coordination, and execution abilities.</p>
-            </div>
+            <h2 class="section-title">Leadership & Work Experience</h2>
+            <p class="section-subtitle">Demonstrated management, coordination, and operational execution abilities.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">Assistant Coach</h3>
-                                <p class="text-sm text-brand-400">Garden State Tennis Center – Edison, NJ</p>
-                            </div>
-                            <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">10th Grade - Present</span>
-                        </div>
-                        <ul class="mt-4 space-y-2 text-sm text-slate-300 list-disc list-inside">
-                            <li>Provide tennis instruction in structured group clinics and private coaching sessions.</li>
-                            <li>Organize and coordinate weekly Universal Tennis Rating (UTR) match play events and referee matches.</li>
-                            <li>Coached high-performing athletes including Girls 12 & Under and Boys 14 & Under National Champions.</li>
-                        </ul>
-                    </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="color: #fff;">Assistant Coach</h3>
+                    <p style="color: #38bdf8; font-size: 0.85rem; margin-bottom: 1rem;">Garden State Tennis Center – Edison, NJ</p>
+                    <ul class="bullet-list">
+                        <li>Provide tennis instruction in structured group clinics and private coaching sessions.</li>
+                        <li>Organize and coordinate weekly Universal Tennis Rating (UTR) match play events and referee matches.</li>
+                        <li>Coached high-performing athletes including Girls 12 & Under and Boys 14 & Under National Champions.</li>
+                    </ul>
                 </div>
 
-                <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">Community & Event Leadership</h3>
-                                <p class="text-sm text-brand-400">Hands for Hope Food Pantry & Key Club Ambassador</p>
-                            </div>
-                            <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">9th - 12th Grade</span>
-                        </div>
-                        <ul class="mt-4 space-y-2 text-sm text-slate-300 list-disc list-inside">
-                            <li>Organized food donation supply chains, packaged and delivered meals at St. James Episcopal Church distribution center.</li>
-                            <li>Led campus tours and hosted prospective students for full-day visits to ease transitions as Key Club Ambassador.</li>
-                            <li>RPS Varsity Tennis Team Captain & Somerset County Champion (#3 Singles).</li>
-                        </ul>
-                    </div>
+                <div class="card">
+                    <h3 style="color: #fff;">Community & Event Leadership</h3>
+                    <p style="color: #38bdf8; font-size: 0.85rem; margin-bottom: 1rem;">Hands for Hope Pantry & Key Club Ambassador</p>
+                    <ul class="bullet-list">
+                        <li>Organized food donation supply chains, packaged and delivered meals at St. James Episcopal Church distribution center.</li>
+                        <li>Led campus tours and hosted prospective students for full-day visits as Key Club Ambassador.</li>
+                        <li>RPS Varsity Tennis Team Captain & Somerset County Champion.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="pt-8">
-            <div class="max-w-4xl mx-auto rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-8 sm:p-12 shadow-2xl text-center relative overflow-hidden">
-                <div class="absolute -top-24 -left-24 w-48 h-48 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
-                <div class="relative z-10 space-y-6">
-                    <h2 class="text-3xl font-bold text-white tracking-tight">Let's Connect</h2>
-                    <p class="text-slate-300 max-w-xl mx-auto text-sm sm:text-base">
-                        I am actively seeking opportunities in Supply Chain Management, Demand Planning, and Operations Analysis. Feel free to reach out directly via email or phone.
-                    </p>
-
-                    <div class="flex flex-wrap items-center justify-center gap-6 pt-4">
-                        <a href="mailto:Jonah.a312@gmail.com" class="px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold transition-all shadow-lg shadow-brand-600/30 flex items-center gap-3">
-                            <i class="fa-regular fa-envelope text-lg"></i>
-                            <span>Jonah.a312@gmail.com</span>
-                        </a>
-                        <a href="tel:7325158254" class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold transition-all flex items-center gap-3">
-                            <i class="fa-solid fa-phone text-lg"></i>
-                            <span>(732) 515-8254</span>
-                        </a>
-                    </div>
-
-                    <p class="text-xs text-slate-400 pt-4">
-                        <i class="fa-solid fa-location-dot mr-1"></i> Based in Metuchen, New Jersey
-                    </p>
+        <section id="contact">
+            <div class="contact-box">
+                <h2 style="color: #fff; font-size: 2rem; margin-bottom: 1rem;">Let's Connect</h2>
+                <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto 2rem; font-size: 0.95rem;">
+                    I am actively seeking opportunities in Supply Chain Management, Demand Planning, and Operations Analysis. Feel free to reach out directly via email or phone.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="mailto:Jonah.a312@gmail.com" class="btn-primary">
+                        <i class="fa-regular fa-envelope"></i> Jonah.a312@gmail.com
+                    </a>
+                    <a href="tel:7325158254" class="btn-secondary">
+                        <i class="fa-solid fa-phone"></i> (732) 515-8254
+                    </a>
                 </div>
             </div>
         </section>
@@ -494,11 +469,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-400 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; Jonah Aliwalas. All rights reserved.</p>
-            <p class="font-mono text-slate-400">Tailored for Supply Chain & Demand Planning Roles</p>
-        </div>
+    <footer class="container">
+        <p>&copy; Jonah Aliwalas. All rights reserved. Tailored for Supply Chain & Demand Planning Roles.</p>
     </footer>
 
 </body>
