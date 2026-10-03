@@ -4,94 +4,522 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jonah Aliwalas | Supply Chain & Demand Planning Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #020617; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
-        a { color: inherit; text-decoration: none; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
-        nav { background: #0f172a; padding: 1rem 1.5rem; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: bold; font-size: 1.2rem; color: #38bdf8; }
-        .nav-links a { margin-left: 1.5rem; font-size: 0.9rem; color: #cbd5e1; }
-        .hero { padding: 4rem 0 2rem; }
-        .badge { display: inline-block; background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; color: #38bdf8; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1rem; }
-        h1 { font-size: 2.5rem; color: #fff; margin-bottom: 1rem; }
-        .highlight { color: #38bdf8; }
-        .quote { background: #0f172a; border-left: 4px solid #38bdf8; padding: 1rem; margin: 1.5rem 0; font-style: italic; color: #94a3b8; }
-        .btn { display: inline-block; background: #0284c7; color: #fff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: bold; margin-top: 1rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .card { background: #0f172a; border: 1px solid #1e293b; padding: 1.5rem; border-radius: 8px; }
-        .card h3 { color: #fff; margin-bottom: 0.5rem; }
-        .card p, .card ul { color: #94a3b8; font-size: 0.9rem; }
-        .card ul { padding-left: 1.2rem; margin-top: 0.5rem; }
-        footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.85rem; border-top: 1px solid #1e293b; margin-top: 4rem; }
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --highlight: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 8%;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        section {
+            padding: 4rem 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero / Personal Statement */
+        .hero {
+            padding: 5rem 8% 3rem;
+            text-align: left;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .personal-statement {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.25rem;
+            font-style: italic;
+        }
+
+        .contact-bar {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .contact-bar span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Interactive Supply Chain / Demand Forecasting Demo */
+        .pipeline-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .pipeline-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: 6px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .step-card.active {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+        }
+
+        .step-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .pipeline-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .pipeline-controls input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: #0f172a;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            color: white;
+        }
+
+        .pipeline-output {
+            margin-top: 1.25rem;
+            background-color: var(--bg-color);
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            min-height: 50px;
+            border: 1px dashed var(--border-color);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-highlights {
+            margin-bottom: 1.25rem;
+            padding-left: 1.25rem;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .project-highlights li {
+            margin-bottom: 0.4rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Education & Skills */
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .info-card .sub-title {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-item {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 5%;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Jonah Aliwalas</div>
-        <div class="nav-links">
+    <header>
+        <div class="logo">Jonah Aliwalas | SCM & Planning</div>
+        <nav>
             <a href="#about">About</a>
-            <a href="#projects">Case Studies</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+            <a href="#architecture">Planning Workflow</a>
+            <a href="#projects">Projects</a>
+            <a href="#background">Education & Skills</a>
+        </nav>
+    </header>
 
-    <div class="container">
-        <section class="hero">
-            <div class="badge">Supply Chain & Demand Planning Specialist</div>
-            <h1>Optimizing Operations & Networks <span class="highlight">Behind the Scenes</span></h1>
-            <div class="quote">
+    <main>
+        <!-- Hero Section -->
+        <section id="about" class="hero">
+            <span class="hero-badge">Supply Chain • Demand Planning • Operations</span>
+            <h1>Jonah Aliwalas</h1>
+            <p class="personal-statement">
                 "I've always had an interest in how things happen. Supply Chain Management will allow me to work behind the scenes on the execution of big projects that affect millions of people."
-            </div>
-            <a href="mailto:Jonah.a312@gmail.com" class="btn"><i class="fa-regular fa-envelope"></i> Get In Touch</a>
-        </section>
-
-        <section id="about">
-            <div class="grid">
-                <div class="card">
-                    <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-                    <p><strong>Rutgers University - New Brunswick</strong><br>GPA: 3.5</p>
-                    <p style="margin-top: 0.5rem;"><strong>Rutgers Preparatory School</strong><br>Weighted GPA: 3.98 | Honors with Distinction</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-chart-line"></i> Strategic Focus</h3>
-                    <p>Demand Management, Logistics, Process Flow Optimization, and Inventory Control. Bloomberg Market Concepts Certified.</p>
-                </div>
+            </p>
+            <div class="contact-bar">
+                <span>📍 Metuchen, NJ</span>
+                <span>✉️ Jonah.a312@gmail.com</span>
+                <span>📞 (732) 515-8254</span>
             </div>
         </section>
 
-        <section id="projects" style="margin-top: 3rem;">
-            <h2 style="color: #fff;">Key Case Studies</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Lowe's Holmdel NJ Analysis</h3>
-                    <p>Evaluated workplace efficiency, communication flow, and onboarding processes across organizational tiers.</p>
-                    <ul>
-                        <li>Identified associate-management communication gaps.</li>
-                        <li>Recommended structured monthly recognition routines.</li>
+        <!-- Demand Planning & Execution Workflow Demo -->
+        <section id="architecture">
+            <h2 class="section-title">Demand Forecasting & Supply Chain Pipeline</h2>
+            <div class="pipeline-container">
+                <div class="pipeline-steps">
+                    <div class="step-card" id="step-1">
+                        <h3>1. Historical Data Analysis</h3>
+                        <p>Aggregating inventory baseline, sales velocity, and store traffic.</p>
+                    </div>
+                    <div class="step-card" id="step-2">
+                        <h3>2. Demand Forecasting</h3>
+                        <p>Applying quantitative models to project lead times and SKU demand.</p>
+                    </div>
+                    <div class="step-card" id="step-3">
+                        <h3>3. Bottleneck Analysis</h3>
+                        <p>Evaluating vendor reliability, labor capacity, and communication gaps.</p>
+                    </div>
+                    <div class="step-card" id="step-4">
+                        <h3>4. Execution & Optimization</h3>
+                        <p>Deploying recurring feedback loops, check-ins, and replenishment schedules.</p>
+                    </div>
+                </div>
+
+                <div class="pipeline-controls">
+                    <input type="text" id="demo-input" placeholder="Enter SKU / Store Location (e.g., Lowe's Holmdel NJ SKU-1049)" value="Lowe's Holmdel NJ - Inventory & Operational Review">
+                    <button class="btn" onclick="runPipeline()">Run Analysis Pipeline</button>
+                </div>
+
+                <div class="pipeline-output" id="demo-output">
+                    Click "Run Analysis Pipeline" to model the supply chain execution workflow.
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Case Studies & Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1: Lowe's Holmdel -->
+                <div class="project-card">
+                    <div>
+                        <h3>Lowe's Holmdel Organizational & Communication Gap Analysis</h3>
+                        <p>Conducted a comprehensive, semester-long operational analysis of the Lowe's retail branch in Holmdel, New Jersey, focusing on management practices, workplace communication, and staff retention.</p>
+                        <ul class="project-highlights">
+                            <li>Gathered qualitative and quantitative data by interviewing employees across various organizational hierarchy levels.</li>
+                            <li>Assessed onboarding workflows, conflict resolution protocols, and overall operational functionality.</li>
+                            <li>Identified a critical communication and recognition gap between store management and frontline associates.</li>
+                            <li>Formulated strategic recommendations: implemented monthly associate recognition routines and bi-weekly supervisor check-ins to bridge the gap.</li>
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Operations Analysis</span>
+                        <span class="tag">Workplace Communication</span>
+                        <span class="tag">Process Improvement</span>
+                        <span class="tag">Field Research</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Tesla Strategic S.W.O.T. Analysis -->
+                <div class="project-card">
+                    <div>
+                        <h3>Tesla Strategic S.W.O.T. & Supply Chain Decision Analysis</h3>
+                        <p>Executed a research project during the Stevens Institute of Technology Business Explorer Program analyzing Tesla's strategic positioning and decision-making framework.</p>
+                        <ul class="project-highlights">
+                            <li>Evaluated internal strengths/weaknesses and external opportunities/threats in Tesla's automotive supply chain.</li>
+                            <li>Analyzed vertical integration strategies, battery cell manufacturing logistics, and gigafactory sourcing.</li>
+                            <li>Presented strategic insights on mitigating global supply chain risks and scaling operational capacity.</li>
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">SWOT Analysis</span>
+                        <span class="tag">Strategic Sourcing</span>
+                        <span class="tag">Vertical Integration</span>
+                        <span class="tag">Business Strategy</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Background, Education & Technical Skills -->
+        <section id="background">
+            <h2 class="section-title">Education & Core Competencies</h2>
+            <div class="two-column">
+                
+                <div class="info-card">
+                    <h3>Education & Certifications</h3>
+                    <p class="sub-title">Rutgers University - New Brunswick, NJ</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">GPA: 3.5</p>
+                    
+                    <p class="sub-title" style="margin-top: 1rem;">Certifications & Programs</p>
+                    <ul style="padding-left: 1.25rem; color: #cbd5e1; font-size: 0.9rem;">
+                        <li><strong>Bloomberg Market Concepts (BMC) Certification</strong></li>
+                        <li>Bentley University Stock Market Challenge (Ranked 29th out of 200)</li>
+                        <li>Stevens Institute of Technology Business Explorer Program</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3>Tesla S.W.O.T. Analysis</h3>
-                    <p>Analyzed manufacturing supply chain vulnerabilities, raw material procurement, and vertical integration strategy.</p>
-                </div>
-            </div>
-        </section>
 
-        <section id="contact" style="margin-top: 3rem;">
-            <div class="card" style="text-align: center;">
-                <h3>Let's Connect</h3>
-                <p>Actively seeking opportunities in Supply Chain Management & Demand Planning.</p>
-                <p style="margin-top: 1rem; color: #38bdf8;"><strong>Email:</strong> Jonah.a312@gmail.com | <strong>Phone:</strong> (732) 515-8254</p>
+                <div class="info-card">
+                    <h3>Skills & Toolset</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Domain Knowledge & Technical Proficiency</p>
+                    <div class="tech-grid">
+                        <div class="tech-item">Supply Chain Management</div>
+                        <div class="tech-item">Demand Planning</div>
+                        <div class="tech-item">Forecasting & Analytics</div>
+                        <div class="tech-item">Bloomberg Market Concepts</div>
+                        <div class="tech-item">Process Optimization</div>
+                        <div class="tech-item">AutoCAD & Technical Design</div>
+                        <div class="tech-item">S.W.O.T. & Risk Analysis</div>
+                        <div class="tech-item">Operations Management</div>
+                    </div>
+                </div>
+
             </div>
         </section>
-    </div>
+    </main>
 
     <footer>
-        &copy; Jonah Aliwalas. All rights reserved. Metuchen, NJ.
+        <p>&copy; 2026 Jonah Aliwalas. Portfolio optimized for Supply Chain, Demand Planning, and Operations.</p>
     </footer>
 
+    <script>
+        function runPipeline() {
+            const input = document.getElementById('demo-input').value;
+            const output = document.getElementById('demo-output');
+            
+            if (!input.trim()) {
+                output.innerText = "Please enter an operational focus area to begin analysis.";
+                return;
+            }
+
+            const steps = [
+                document.getElementById('step-1'),
+                document.getElementById('step-2'),
+                document.getElementById('step-3'),
+                document.getElementById('step-4')
+            ];
+
+            // Reset step highlights
+            steps.forEach(step => step.classList.remove('active'));
+            output.innerText = "Initializing operational analysis workflow...";
+
+            // Simulate Supply Chain Analysis Workflow
+            setTimeout(() => {
+                steps[0].classList.add('active');
+                output.innerText = `[1. Baseline Data]: Ingesting parameters for "${input}"...`;
+            }, 300);
+
+            setTimeout(() => {
+                steps[0].classList.remove('active');
+                steps[1].classList.add('active');
+                output.innerText = `[2. Demand Model]: Calculating projected lead times and velocity metrics...`;
+            }, 1200);
+
+            setTimeout(() => {
+                steps[1].classList.remove('active');
+                steps[2].classList.add('active');
+                output.innerText = `[3. Bottleneck Identification]: Flagged communication gaps & supervisor/associate feedback latency.`;
+            }, 2100);
+
+            setTimeout(() => {
+                steps[2].classList.remove('active');
+                steps[3].classList.add('active');
+                output.innerText = `[4. Recommendation Generated]: Schedule bi-weekly supervisor check-ins & monthly recognition routines.`;
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
